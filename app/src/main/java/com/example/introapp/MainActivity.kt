@@ -1,5 +1,7 @@
 package com.example.introapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.util.Log
@@ -21,5 +23,8 @@ class MainActivity : AppCompatActivity() {
     }
     fun myClickHandler(view: View) {
         Log.i("MainActivity","button clicked")
+        var webIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
+        startActivity(webIntent)
     }
+
 }
