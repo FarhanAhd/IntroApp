@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IntroApp</string>
+    <string name="enter_name_hint">പേര് നൽകുക</string>
+    <string name="hint_enter_pin">പിൻ നൽകുക</string>
+    <string name="loginbutton">ലോഗിൻ</string>
+    <string name="cancel">റദ്ദാക്കുക</string>
+
+</resources>
