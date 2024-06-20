@@ -2,54 +2,47 @@ package com.example.introapp
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
-import android.view.View
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.os.Bundle
+import android.provider.AlarmClock
+import android.util.Log
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
     var TAG = "MainActivity"
 
     //chick is getting created in the egg  --- memory is being allocated for the activity
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {  //method header or signature
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        Log.i(TAG,"activity created")
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        Log.i(TAG,"activity created -- memory allocations")
     }
+
     //chick has hatched  --- activity is visible for clicks
     override fun onStart() {
         super.onStart()
-        Log.i(TAG,"activity started")
+        Log.e(TAG,"activity started -- initialize  data")
 
     }
 
     //chick has woken up -- come back to the foreground
     override fun onResume() {
         super.onResume()
-        Log.i(TAG,"activity resumed")
+        Log.w(TAG,"activity resumed --restore state of the app")
 
     }
 
     //chick has slept  --is partially visible -- background
     override fun onPause() {
         super.onPause()
-        Log.i(TAG,"activity paused")
+        Log.d(TAG,"activity paused --store the app state")
 
     }
 
     //activity hibernated
     override fun onStop() {
         super.onStop()
-        Log.i(TAG,"activity stopped")
+        Log.v(TAG,"activity stopped")
 
     }
 
@@ -60,10 +53,32 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun myClickHandler(view: View) {
         Log.i("MainActivity","button clicked")
-        var webIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
-        startActivity(webIntent)
+        //implicit intent ..not taking the name of the class to be invoked
+        //  var dialIntent:Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:987654398765"))
+        /*var webIntent:Intent = Intent(Intent.ACTION_VIEW,Uri.parse("http://www.yahoo.com"))
+        startActivity(webIntent)*/
+        //createAlarm("vit",19,32) //vit, 19, 32 are my arguments
+
+        //context == history
+        //explicigt intent = HomeActivity reference name
+        var hIntent = Intent(this,HomeActivity::class.java)
+        hIntent.putExtra("nkey","Farhan-android")
+        throw NullPointerException("homeactivity crash demo")
+
+        startActivity(hIntent)
     }
 
+    fun createAlarm(message: String, hour: Int, minutes: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_HOUR, hour)
+            putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+        }
+        //if (intent.resolveActivity(packageManager) != null) {
+        startActivity(intent)
+        // }
+    }
 }
