@@ -51,4 +51,9 @@ dependencies {
 
     // Kotlin serialization
     implementation(libs.kotlinx.serialization.json)
+    //moshi  -- parse json
+    implementation (libs.moshi.kotlin)
+    implementation (libs.converter.moshi)
+    //coil -- download images
+    implementation (libs.coil)
 }
