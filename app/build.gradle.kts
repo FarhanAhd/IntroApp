@@ -1,11 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.introapp"
     compileSdk = 34
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.example.introapp"
@@ -33,6 +38,10 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
+    kapt (libs.androidx.room.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

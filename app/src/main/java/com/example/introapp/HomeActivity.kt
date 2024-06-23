@@ -2,24 +2,30 @@ package com.example.introapp
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
+import com.example.introapp.databinding.ActivityHomeBinding
+import com.example.introapp.databinding.ActivityHomeBindingImpl
 
 class HomeActivity : AppCompatActivity() {
     //lateinit var brake:Int?
+    // lateinit var binding:ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        // brake
-
 
     }
 
     override fun onStart() {
         super.onStart()
     }
+
+    fun insertDb(view: View) {}
 }
