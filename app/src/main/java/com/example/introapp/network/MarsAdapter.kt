@@ -1,17 +1,19 @@
 package com.example.introapp.network
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.introapp.R
 
 class MarsAdapter(var listMarsPhotos: List<MarsPhoto>) :RecyclerView.Adapter<MarsAdapter.MarsViewHolder>() {
 
     class MarsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var textView:TextView = itemView.findViewById(R.id.tvRowitem)
+        var imageView:ImageView = itemView.findViewById(R.id.ivRow)
 
     }
 
@@ -25,7 +27,9 @@ class MarsAdapter(var listMarsPhotos: List<MarsPhoto>) :RecyclerView.Adapter<Mar
     }
 
     override fun onBindViewHolder(holder: MarsViewHolder, position: Int) {
-        holder.textView.setText(listMarsPhotos.get(position).imgSrc)
+        var url = listMarsPhotos.get(position).imgSrc
+        holder.textView.setText(url)
+        holder.imageView.load(url)
 
     }
 }
