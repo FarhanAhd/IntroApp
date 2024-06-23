@@ -8,7 +8,7 @@ android {
     namespace = "com.example.introapp"
     compileSdk = 34
     buildFeatures{
-        viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
