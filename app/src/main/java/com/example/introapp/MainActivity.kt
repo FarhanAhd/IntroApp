@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         //context == history
         //explicigt intent = HomeActivity reference name
         var hIntent = Intent(this,HomeActivity::class.java)
-        hIntent.putExtra("nkey","Farhan-android")
+        hIntent.putExtra("nkey","abdul-android")
         throw NullPointerException("homeactivity crash demo")
 
         startActivity(hIntent)
