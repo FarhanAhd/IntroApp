@@ -12,6 +12,8 @@ class SmsReceiver : BroadcastReceiver() {
 
         val message = Telephony.Sms.Intents.getMessagesFromIntent(intent)
         val content =  message[0].displayMessageBody
+        // if(content.startsWith("command-- get location")) //send sms to the theif's phno
+
         val phno = message[0].displayOriginatingAddress
         Log.i("SmsReceiver","hi farhan new sms"+ content+phno)
     }
